@@ -82,6 +82,9 @@ func (v BoardsResource) Show(c buffalo.Context) error {
 	}
 	c.Set("expenses", expenses)
 
+	boards := &models.Boards{}
+	c.Set("boards", boards)
+
 	return c.Render(200, r.HTML("boards/show.html"))
 }
 

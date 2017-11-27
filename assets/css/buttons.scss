@@ -1,0 +1,59 @@
+.btn{
+  border: 0;
+}
+.btn-success{
+  background-color: $green;
+
+  &:hover{
+    background-color: $green-hover;
+  }
+}
+.btn-danger{
+  background: $red;
+}
+.btn-info{
+  background: $blue;
+}
+
+.btn-xs{
+  padding: 8px 9px;
+}
+
+.button-with-tooltip{
+  position: relative;
+
+  .btn-tooltip{
+    position: absolute;
+    top: -33px;
+    padding: 5px 8px;
+    background: #f1f1f1;
+    color: #5a5a5a;
+    font-weight: 500;
+    border-radius: 3px;
+
+    opacity: 0;
+    transition: all .2s linear;
+
+    &:after{
+      top: 100%;
+    	left: 50%;
+    	border: solid transparent;
+    	content: " ";
+    	height: 0;
+    	width: 0;
+    	position: absolute;
+    	pointer-events: none;
+    	border-color: rgba(136, 183, 213, 0);
+    	border-top-color: #eaeaea;
+    	border-width: 7px;
+    	margin-left: -7px;
+    }
+  }
+
+  &:hover{
+    .btn-tooltip{
+      opacity: 1;
+      top: -35px;
+    }
+  }
+}
