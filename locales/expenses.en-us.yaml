@@ -1,0 +1,6 @@
+- id: "expense.created.success"
+  translation: "Expense was successfully created."
+- id: "expense.updated.success"
+  translation: "Expense was successfully updated."
+- id: "expense.destroyed.success"
+  translation: "Expense was successfully destroyed."

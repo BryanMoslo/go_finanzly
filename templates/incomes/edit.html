@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1>Edit Income</h1>
+</div>
+
+<%= form_for(income, {action: incomePath({ income_id: income.ID }), method: "PUT"}) { %>
+  <%= partial("incomes/form.html") %>
+  <a href="<%= incomePath({ income_id: income.ID }) %>" class="btn btn-warning" data-confirm="Are you sure?">Cancel</a>
+<% } %>

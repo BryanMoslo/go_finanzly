@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Income#Show</h1>
+</div>
+
+<ul class="list-unstyled list-inline">
+  <li><a href="<%= incomesPath() %>" class="btn btn-info">Back to all Incomes</a></li>
+  <li><a href="<%= editIncomePath({ income_id: income.ID })%>" class="btn btn-warning">Edit</a></li>
+  <li><a href="<%= incomePath({ income_id: income.ID })%>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+</ul>
+
+<p>
+  <strong>Name</strong>: <%= income.Name %>
+</p>
+<p>
+  <strong>Value</strong>: <%= income.Value %>
+</p>
+<p>
+  <strong>BoardID</strong>: <%= income.BoardID %>
+</p>

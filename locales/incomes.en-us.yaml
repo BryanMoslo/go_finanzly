@@ -1,0 +1,6 @@
+- id: "income.created.success"
+  translation: "Income was successfully created."
+- id: "income.updated.success"
+  translation: "Income was successfully updated."
+- id: "income.destroyed.success"
+  translation: "Income was successfully destroyed."

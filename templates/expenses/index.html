@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1>Expenses</h1>
+</div>
+<ul class="list-unstyled list-inline">
+  <li><a href="<%= newExpensesPath() %>" class="btn btn-primary">Create New Expense</a></li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+  <th>Name</th>
+    <th>Value</th>
+    <th>Paid</th>
+    <th>BoardID</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <%= for (expense) in expenses { %>
+      <tr>
+      <td><%= expense.Name %></td>
+        <td><%= expense.Value %></td>
+        <td><%= expense.Paid %></td>
+        <td><%= expense.BoardID %></td>
+        <td>
+          <div class="pull-right">
+            <a href="<%= expensePath({ expense_id: expense.ID }) %>" class="btn btn-info">View</a>
+            <a href="<%= editExpensePath({ expense_id: expense.ID }) %>" class="btn btn-warning">Edit</a>
+            <a href="<%= expensePath({ expense_id: expense.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <%= paginator(pagination) %>
+</div>

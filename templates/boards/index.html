@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-between border-wrapper">
+  <div class="board-values">
+
+  </div>
+
+  <div class="boards-list d-flex justify-content-between flex-column">
+    <div class="periods">
+      <h5>Recientes</h5>
+      <ul class="">
+        <%= for (board) in boards { %>
+          <li>
+            <a href="<%= boardPath({ board_id: board.ID }) %>"><%= board.Name %></a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+
+    <!-- data-toggle="modal" data-target="#add-report" -->
+    <a href="<%= newBoardsPath() %>" class="add-report">Nuevo Tablero</a>
+  </div>
+</div>

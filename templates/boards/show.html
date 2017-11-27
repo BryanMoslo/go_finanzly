@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Board#Show</h1>
+</div>
+
+<ul class="list-unstyled list-inline">
+  <li><a href="<%= boardsPath() %>" class="btn btn-info">Back to all Boards</a></li>
+  <li><a href="<%= editBoardPath({ board_id: board.ID })%>" class="btn btn-warning">Edit</a></li>
+  <li><a href="<%= boardPath({ board_id: board.ID })%>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+</ul>
+
+<p>
+  <strong>Name</strong>: <%= board.Name %>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <th>Name</th>
+    <th>Value</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <%= for (income) in incomes { %>
+      <tr>
+        <td><%= income.Name %></td>
+        <td><%= income.Value %></td>
+        <td>
+          <div class="pull-right">
+            <a href="<%= editIncomePath({ income_id: income.ID }) %>" class="btn btn-warning">Edit</a>
+            <a href="<%= incomePath({ income_id: income.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+
+    <%= for (expense) in expenses { %>
+      <tr>
+        <td><%= expense.Name %></td>
+        <td><%= expense.Value %></td>
+        <td>
+          <div class="pull-right">
+            <a href="<%= editExpensePath({ expense_id: expense.ID }) %>" class="btn btn-warning">Edit</a>
+            <a href="<%= expensePath({ expense_id: expense.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
