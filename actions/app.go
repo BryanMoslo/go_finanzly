@@ -55,12 +55,22 @@ func App() *buffalo.App {
 		app.Use(T.Middleware())
 
 		boardResource := BoardsResource{&buffalo.BaseResource{}}
+		expenseResource := ExpensesResource{&buffalo.BaseResource{}}
 
 		app.ServeFiles("/assets", assetsBox)
+
 		app.Resource("/boards", boardResource)
-		app.Resource("/incomes", IncomesResource{&buffalo.BaseResource{}})
 		app.GET("/", boardResource.List)
-		app.Resource("/expenses", ExpensesResource{&buffalo.BaseResource{}})
+
+		app.Resource("/incomes", IncomesResource{&buffalo.BaseResource{}})
+
+		app.Resource("/expenses", expenseResource)
+
+		app.PUT("/paid_expense/{expense_id}", PaidExpense)
+
+		app.GET("/routes", HomeHandler)
+
+
 	}
 
 	return app

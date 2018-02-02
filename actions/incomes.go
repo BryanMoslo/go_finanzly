@@ -115,7 +115,7 @@ func (v IncomesResource) Create(c buffalo.Context) error {
 	c.Flash().Add("success", "Income was created successfully")
 
 	// and redirect to the incomes index page
-	return c.Redirect(302, "/incomes/%s", income.ID)
+	return c.Redirect(302, "/boards/%s", income.BoardID)
 }
 
 // Edit renders a edit form for a Income. This function is
@@ -185,20 +185,19 @@ func (v IncomesResource) Destroy(c buffalo.Context) error {
 	tx := c.Value("tx").(*pop.Connection)
 
 	// Allocate an empty Income
-	income := &models.Income{}
+	income := models.Income{}
 
 	// To find the Income the parameter income_id is used.
-	if err := tx.Find(income, c.Param("income_id")); err != nil {
+	if err := tx.Find(&income, c.Param("income_id")); err != nil {
 		return c.Error(404, err)
 	}
 
-	if err := tx.Destroy(income); err != nil {
+	boardID := income.BoardID
+
+	if err := tx.Destroy(&income); err != nil {
 		return errors.WithStack(err)
 	}
 
-	// If there are no errors set a flash message
-	c.Flash().Add("success", "Income was destroyed successfully")
-
-	// Redirect to the incomes index page
-	return c.Redirect(302, "/incomes")
+	// Redirect to the boards list page
+	return c.Redirect(302, "/boards/%s", boardID)
 }

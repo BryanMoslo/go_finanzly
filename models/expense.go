@@ -55,3 +55,24 @@ func (e *Expense) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
 func (e *Expense) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
 }
+
+func (e Expenses) GetTotal() int {
+	value := 0
+
+	for _, element := range e {
+		value += element.Value
+	}
+
+	return value
+}
+
+func (e Expenses) GetTotalPaid() int {
+	value := 0
+	for _, element := range e {
+		if(element.Paid){
+			value += element.Value
+		}
+	}
+
+	return value
+}

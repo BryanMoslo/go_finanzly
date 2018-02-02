@@ -1,0 +1,68 @@
+<div class="modal fade" id="new-income" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar Ingreso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+
+      <%= form({action: incomesPath(), method: "POST"}) { %>
+        <div class="modal-body row">
+          <input type="hidden" name="BoardID" value="<%= board.ID %>">
+
+          <div class="form-group parameter col-md-6">
+            <label for="Name">Nombre <span class="required">*</span></label>
+            <input class="form-control" id="income-Name" name="Name" type="text" value="" placeholder="Nombre" required>
+          </div>
+
+          <div class="form-group parameter col-md-6">
+            <label for="">Valor <span class="required">*</span></label>
+            <input type="number" id="income-Value" name="Value" value="" placeholder="Valor" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new-expense" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar Egreso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+
+      <%= form({action: expensesPath(), method: "POST"}) { %>
+        <div class="modal-body row">
+          <input type="hidden" name="BoardID" value="<%= board.ID %>">
+
+          <div class="form-group parameter col-md-6">
+            <label for="Name">Nombre <span class="required">*</span></label>
+            <input class="form-control" id="expense-Name" name="Name" type="text" value="" placeholder="Nombre" required>
+          </div>
+
+          <div class="form-group parameter col-md-6">
+            <label for="">Valor <span class="required">*</span></label>
+            <input type="number" id="expense-Value" name="Value" value="" placeholder="Valor" required>
+          </div>
+
+          <div class="form-group parameter col-md-6">
+            <label for="expense-Paid">Pagado? </label>
+            <input type="checkbox" id="expense-Paid" name="Paid" value="false">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>

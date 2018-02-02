@@ -54,3 +54,13 @@ func (i *Income) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
 func (i *Income) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
 }
+
+func (i Incomes) GetTotal() int {
+	value := 0
+
+	for _,e := range i {
+		value += e.Value
+	}
+
+	return value
+}

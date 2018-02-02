@@ -5,18 +5,18 @@
         <h3 class="mb-2"><%= board.Name %></h3>
 
         <div class="board-action-buttons action-buttons d-flex justify-content-between align-items-center">
-          <a href="<%= editBoardPath({ board_id: board.ID }) %>" class="button-with-tooltip btn btn-info btn-sm d-flex justify-content-center align-items-center">Editar tablero</a>
+          <a href="#" data-toggle="modal" data-target="#edit-board" class="button-with-tooltip btn btn-info btn-sm d-flex justify-content-center align-items-center">Editar tablero</a>
           <a href="<%= boardPath({ board_id: board.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="button-with-tooltip btn btn-danger btn-sm d-flex justify-content-center align-items-center">Eliminar tablero</a>
         </div>
       </div>
 
       <div class="d-flex justify-content-between align-items-center">
         <div class="action-buttons d-flex justify-content-around align-self-end">
-          <span href="#" class="button-with-tooltip btn btn-success btn-sm d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#new-entrance">
+          <span href="#" class="button-with-tooltip btn btn-success btn-sm d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#new-income">
             Nuevo Ingreso
           </span>
 
-          <span href="#" class="button-with-tooltip btn btn-danger btn-sm  d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#new-exit">
+          <span href="#" class="button-with-tooltip btn btn-danger btn-sm  d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#new-expense">
             Nuevo Egreso
           </span>
         </div>
@@ -27,10 +27,12 @@
               <span>
                 Total Ingresos
                 <i class="fa fa-info-circle button-with-tooltip" aria-hidden="true">
-                  <b class="btn-tooltip">Ingresos en este tablero</b>
+                  <b class="btn-tooltip">Suma de todos tus ingresos de este tablero.</b>
                 </i>
               </span>
-              <span>$100.000</span>
+              <span>
+                <%= toCurrency(incomes.GetTotal()) %>
+              </span>
             </li>
             <li class="d-flex flex-column align-items-center">
               <span>
@@ -39,7 +41,9 @@
                   <b class="btn-tooltip">Egresos en este tablero</b>
                 </i>
               </span>
-              <span>$100.000</span>
+              <span>
+                <%= toCurrency(expenses.GetTotal()) %>
+              </span>
             </li>
 
             <li class="d-flex flex-column align-items-center">
@@ -49,7 +53,9 @@
                   <b class="btn-tooltip">Dinero en el bolsillo</b>
                 </i>
               </span>
-              <span>$100.000</span>
+              <span>
+                <%= toCurrency(incomes.GetTotal() - expenses.GetTotalPaid()) %>
+              </span>
             </li>
             <li class="d-flex flex-column align-items-center">
               <span>
@@ -58,7 +64,9 @@
                   <b class="btn-tooltip">Luego de pagar todo</b>
                 </i>
               </span>
-              <span>$100.000</span>
+              <span>
+                <%= toCurrency(incomes.GetTotal() - expenses.GetTotal()) %>
+              </span>
             </li>
           </ul>
         </div>
@@ -80,7 +88,7 @@
           <%= for (income) in incomes { %>
             <tr>
               <td class="push-left"><%= income.Name %></td>
-              <td><%= income.Value %></td>
+              <td class="entrance-value"><%= toCurrency(income.Value) %></td>
               <td class="center">-</td>
               <td class="center">
                 <div>
@@ -106,8 +114,18 @@
           <%= for (expense) in expenses { %>
             <tr>
               <td class="push-left"><%= expense.Name %></td>
-              <td><%= expense.Value %></td>
-              <td class="center"><%= expense.Paid %></td>
+              <td class="exit-value"><%= toCurrency(expense.Value) %></td>
+
+              <td class="pay-on-list center">
+                <div class="paid-label">
+                  <%= if (expense.Paid) { %>
+                    <span class="text-success">PAGO</span>
+                  <% } else { %>
+                    -
+                  <% } %>
+                </div>
+              </td>
+
               <td class="center">
                 <div>
                   <a href="<%= editExpensePath({ expense_id: expense.ID }) %>">
@@ -137,7 +155,10 @@
       </ul>
     </div>
 
-    <!-- data-toggle="modal" data-target="#add-report" -->
-    <a href="<%= newBoardsPath() %>" class="add-report">Nuevo Tablero</a>
+    <a href="<%= newBoardsPath() %>" class="add-report" data-toggle="modal" data-target="#add-board">Nuevo Tablero</a>
   </div>
 </div>
+
+
+<%= partial("partials/board_modal.html") %>
+<%= partial("partials/incomes_and_expenses_modals.html") %>

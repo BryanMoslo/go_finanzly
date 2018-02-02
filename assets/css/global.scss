@@ -4,6 +4,14 @@ html, body, .boards-list {
   font-size: 14px;
 }
 
+*:focus{
+  outline: none;
+  text-decoration: none !important;
+}
+a:focus, a:hover {
+  color: white;
+}
+
 ul, li{
   list-style: none;
   padding: 0;
