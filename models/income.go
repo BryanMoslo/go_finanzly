@@ -58,7 +58,7 @@ func (i *Income) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
 func (i Incomes) GetTotal() int {
 	value := 0
 
-	for _,e := range i {
+	for _, e := range i {
 		value += e.Value
 	}
 

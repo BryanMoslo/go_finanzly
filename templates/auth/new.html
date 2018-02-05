@@ -1,0 +1,58 @@
+<div class="login-wrapper">
+  <h2 class="login-title">Finanzly</h2>
+
+  <div class="alert alert-error" role="alert"></div>
+
+
+  <%= form_for(user, {action: signinPath()}) { %>
+    <div class="field">
+      <%= f.InputTag("Name", {class: "user-login-info", placeholder: "Email"}) %>
+    </div>
+
+    <div class="field">
+      <%= f.InputTag("Password", {type: "password", class: "user-login-info", placeholder: "Password"}) %>
+    </div>
+
+    <button class="btn btn-success btn-sm full-width">Log in</button>
+  <% } %>
+
+</div>
+
+
+
+<!-- 
+
+
+    <div class="alert alert-error" role="alert"></div>
+
+  <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="7LuPgFMzhd8JXlOx+MqppwNSFsAQebBQDAlvv3zQaohzM26ckSARcvO9n6LsXEMcW69oNhaPzlpJgVgZqhwWiA==">
+    <div class="field">
+      <input autofocus="autofocus" class="user-login-info" placeholder="Email" type="email" value="" name="user[email]" id="user_email">
+    </div>
+
+    <div class="field">
+      <input autocomplete="off" class="user-login-info" placeholder="Password" type="password" name="user[password]" id="user_password">
+    </div>
+
+    <div class="actions d-flex justify-content-between align-items-center">
+        <div class="field remember-me check-box-wrapper">
+
+          <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+          <label class="checkbox-label" for="user_remember_me"></label>
+
+          <label for="user_remember_me" class="remember-me-text">Recordarme</label>
+        </div>
+        <span>|</span>
+      
+  <a href="/users/sign_up">Registrarme</a>
+  <span>|</span>
+
+  <a href="/users/password/new">Olvidaste tu contraseña?</a>
+
+
+
+
+    </div>
+
+    <input type="submit" name="commit" value="Log in" class="btn btn-success btn-sm full-width" data-disable-with="Log in">
+</form></div> -->

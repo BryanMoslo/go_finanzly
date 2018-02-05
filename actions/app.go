@@ -60,7 +60,6 @@ func App() *buffalo.App {
 		app.ServeFiles("/assets", assetsBox)
 
 		app.Resource("/boards", boardResource)
-		app.GET("/", boardResource.List)
 
 		app.Resource("/incomes", IncomesResource{&buffalo.BaseResource{}})
 
@@ -70,7 +69,18 @@ func App() *buffalo.App {
 
 		app.GET("/routes", HomeHandler)
 
+		app.Use(SetCurrentUser)
+		app.Use(Authorize)
+		app.GET("/users/new", UsersNew)
+		app.POST("/users", UsersCreate)
 
+		// Login
+		app.GET("/signin", AuthNew)
+
+		app.POST("/signin", AuthCreate)
+		app.DELETE("/signout", AuthDestroy)
+		app.Middleware.Skip(Authorize, HomeHandler, UsersNew, UsersCreate, AuthNew, AuthCreate)
+		app.GET("/", AuthCreate)
 	}
 
 	return app

@@ -69,7 +69,7 @@ func (e Expenses) GetTotal() int {
 func (e Expenses) GetTotalPaid() int {
 	value := 0
 	for _, element := range e {
-		if(element.Paid){
+		if element.Paid {
 			value += element.Value
 		}
 	}
