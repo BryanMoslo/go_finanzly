@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-between border-wrapper">
-  <div class="board-values">
-
+  <div class="board-values d-flex justify-content-center align-items-center flex-column">
+    <h3 class="mb-2">Hey, Bienvenido a Finanzly</h3>
+    <p class="mb-5">Una App para llevar tus ingresos y gastos mensuales!</p>
+    <a href="<%= newBoardsPath() %>" class="btn btn-success btn-lg" data-toggle="modal" data-target="#add-board">Agregar un nuevo Tablero</a>
   </div>
 
   <div class="boards-list d-flex justify-content-between flex-column">
@@ -15,7 +17,8 @@
       </ul>
     </div>
 
-    <!-- data-toggle="modal" data-target="#add-report" -->
-    <a href="<%= newBoardsPath() %>" class="add-report">Nuevo Tablero</a>
+    <a href="<%= newBoardsPath() %>" class="add-report" data-toggle="modal" data-target="#add-board">Nuevo Tablero</a>
   </div>
 </div>
+
+<%= partial("partials/board_modal.html") %>

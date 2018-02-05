@@ -3,6 +3,7 @@ package actions
 import (
 	"github.com/gobuffalo/buffalo/render"
 	"github.com/gobuffalo/packr"
+	"github.com/leekchan/accounting"
 )
 
 var r *render.Engine
@@ -18,6 +19,11 @@ func init() {
 		AssetsBox:    assetsBox,
 
 		// Add template helpers here:
-		Helpers: render.Helpers{},
+		Helpers: render.Helpers{
+			"toCurrency": func(value int) string {
+				ac := accounting.Accounting{Symbol: "$", Precision: 0, Thousand: ".", Decimal: ","}
+				return ac.FormatMoney(value)
+			},
+		},
 	})
 }
