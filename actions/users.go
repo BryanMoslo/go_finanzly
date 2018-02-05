@@ -1,7 +1,7 @@
 package actions
 
 import (
-  "github.com/BryanMoslo/go_finanzly/models"
+	"github.com/BryanMoslo/go_finanzly/models"
 	"github.com/gobuffalo/buffalo"
 	"github.com/markbates/pop"
 	"github.com/pkg/errors"
@@ -49,6 +49,7 @@ func SetCurrentUser(next buffalo.Handler) buffalo.Handler {
 			if err != nil {
 				return errors.WithStack(err)
 			}
+
 			c.Set("current_user", u)
 		}
 		return next(c)

@@ -22,12 +22,12 @@
 
         <div class="dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            Bryan Moslo
+            <%= current_user.Email %>
           </a>
 
-          <!-- <div class="dropdown-menu">
-            <a href="/">Salir</a>
-          </div> -->
+          <div class="dropdown-menu">
+            <a href="/signout" method="DELETE" data-method="delete">Salir</a>
+          </div>
         </div>
       </div>
     </header>

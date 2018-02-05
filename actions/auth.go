@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"strings"
 
-  "github.com/BryanMoslo/go_finanzly/models"
+	"github.com/BryanMoslo/go_finanzly/models"
 	"github.com/gobuffalo/buffalo"
 	"github.com/markbates/pop"
 	"github.com/markbates/validate"
@@ -61,6 +61,5 @@ func AuthCreate(c buffalo.Context) error {
 // AuthDestroy clears the session and logs a user out
 func AuthDestroy(c buffalo.Context) error {
 	c.Session().Clear()
-	c.Flash().Add("success", "You have been logged out!")
-	return c.Redirect(302, "/")
+	return c.Redirect(302, "/signin")
 }
