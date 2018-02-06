@@ -10,27 +10,28 @@
   </head>
   <body>
 
+    <%= if (current_user) { %>
+      <header class="d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <h1>
+            <a href="/">Finanzly</a>
+          </h1>
+        </div>
 
-    <header class="d-flex justify-content-between align-items-center">
-      <div class="logo">
-        <h1>
-          <a href="/">Finanzly</a>
-        </h1>
-      </div>
+        <div class="">
 
-      <div class="">
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.Email %>
+            </a>
 
-        <div class="dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.Email %>
-          </a>
-
-          <div class="dropdown-menu">
-            <a href="/signout" method="DELETE" data-method="delete">Salir</a>
+            <div class="dropdown-menu">
+              <a href="/signout" data-method="DELETE">Salir</a>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    <% } %>
 
     <%= yield %>
 
